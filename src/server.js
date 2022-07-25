@@ -1,7 +1,11 @@
 const express = require('express')
 const path = require('path')
+const db = require('./database')
 
 const app = express()
+
+// Conectando com o banco de dados do MongoDB
+db.connect()
 
 // definindo o template engine
 app.set('view engine', 'ejs')
@@ -28,5 +32,5 @@ app.use((req, res) => { // middleware
 const port = process.env.PORT || 8080
 
 app.listen(port, () => {
-    console.log('Funcionando!')
+    console.log(`Connected in ${port}!`)
 })
